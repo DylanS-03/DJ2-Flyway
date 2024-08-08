@@ -3,7 +3,6 @@ package org.example.controllers;
 import io.swagger.annotations.Api;
 import org.example.exceptions.DoesNotExistException;
 import org.example.exceptions.FailedToCreateException;
-import org.example.exceptions.InvalidException;
 import org.example.models.DeliveryEmployeeRequest;
 import org.example.services.DeliveryEmployeeService;
 
@@ -42,16 +41,19 @@ public class DeliveryEmployeeController {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createProduct(DeliveryEmployeeRequest deliveryEmployeeRequest) {
+    public Response createProduct(
+            final DeliveryEmployeeRequest deliveryEmployeeRequest) {
         try {
             return Response
                     .status(Response.Status.CREATED)
-                    .entity(deliveryEmployeeService.createDeliveryEmployee(deliveryEmployeeRequest))
+                    .entity(deliveryEmployeeService.createDeliveryEmployee(
+                            deliveryEmployeeRequest))
                     .build();
         } catch (SQLException | FailedToCreateException e) {
             return Response.serverError().build();
         } catch (DoesNotExistException e) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(e.getMessage()).build();
         }
     }
 
