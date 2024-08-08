@@ -8,11 +8,15 @@ import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
 import org.example.controllers.DeliveryEmployeeController;
 import org.example.controllers.ProjectController;
 import org.example.controllers.TestController;
+import org.example.controllers.SalesEmployeeController;
 import org.example.daos.DeliveryEmployeeDao;
 import org.example.daos.ProjectDao;
 import org.example.daos.TestDao;
+import org.example.daos.SalesEmployeeDao;
 import org.example.services.DeliveryEmployeeService;
 import org.example.services.ProjectService;
+import org.example.services.SalesEmployeeService;
+
 import org.example.services.TestService;
 
 public class DJ2Application extends Application<TestConfiguration> {
@@ -42,6 +46,8 @@ public class DJ2Application extends Application<TestConfiguration> {
                 new DeliveryEmployeeService(new DeliveryEmployeeDao())));
         environment.jersey().register(new ProjectController(
                 new ProjectService(new ProjectDao())));
+        environment.jersey().register(new SalesEmployeeController(
+                new SalesEmployeeService(new SalesEmployeeDao())));
     }
 
 }
