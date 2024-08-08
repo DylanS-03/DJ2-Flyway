@@ -4,11 +4,11 @@ public class DeliveryEmployee {
     private int id;
     private String name;
     private double salary;
-    private int bankAccount;
+    private String bankAccount;
     private String nI;
 
     public DeliveryEmployee(final int id, final String name,
-                            final double salary, final int bankAccount,
+                            final double salary, final String bankAccount,
                             final String nI) {
         this.setId(id);
         this.setName(name);
@@ -41,11 +41,11 @@ public class DeliveryEmployee {
         this.salary = salary;
     }
 
-    public int getBankAccount() {
+    public String getBankAccount() {
         return bankAccount;
     }
 
-    public void setBankAccount(final int bankAccount) {
+    public void setBankAccount(final String bankAccount) {
         this.bankAccount = bankAccount;
     }
 
