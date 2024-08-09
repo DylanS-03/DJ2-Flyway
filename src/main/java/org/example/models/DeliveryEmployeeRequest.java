@@ -1,28 +1,25 @@
 package org.example.models;
 
-public class DeliveryEmployee {
-    private int id;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class DeliveryEmployeeRequest {
     private String name;
     private double salary;
     private String bankAccount;
     private String nI;
 
-    public DeliveryEmployee(final int id, final String name,
-                            final double salary, final String bankAccount,
-                            final String nI) {
-        this.setId(id);
-        this.setName(name);
-        this.setSalary(salary);
-        this.setBankAccount(bankAccount);
-        this.setnI(nI);
-    }
+    @JsonCreator
+    public DeliveryEmployeeRequest(
+            final @JsonProperty("name") String name,
+            final @JsonProperty("salary") double salary,
+            final @JsonProperty("bankAccount") String bankAccount,
+            final @JsonProperty("nI") String nI) {
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(final int id) {
-        this.id = id;
+        this.name = name;
+        this.salary = salary;
+        this.bankAccount = bankAccount;
+        this.nI = nI;
     }
 
     public String getName() {
